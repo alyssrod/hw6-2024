@@ -1,33 +1,36 @@
-var video;
+document.addEventListener("DOMContentLoaded", function() {
+    var video = document.getElementById("player1");
 
-window.addEventListener("load", function() {
-    console.log("Good job opening the window");
-    video = document.getElementById("player1");
+    if (!video) {
+        console.error("Video element not found.");
+        return;
+    }
+
     video.autoplay = false;
     video.loop = false;
-
-    document.querySelector("#play").addEventListener("click", function() {
+    
+    document.getElementById("play").addEventListener("click", function() {
         console.log("Play Video");
         video.play();
-        document.getElementById("volume").innerText = video.volume * 100 + "%";
+        updateVolumeDisplay();
     });
 
-    document.querySelector("#pause").addEventListener("click", function() {
+    document.getElementById("pause").addEventListener("click", function() {
         console.log("Pause Video");
         video.pause();
     });
 
-    document.querySelector("#slower").addEventListener("click", function() {
+    document.getElementById("slower").addEventListener("click", function() {
         video.playbackRate *= 0.9;
         console.log("New speed is " + video.playbackRate);
     });
 
-    document.querySelector("#faster").addEventListener("click", function() {
+    document.getElementById("faster").addEventListener("click", function() {
         video.playbackRate /= 0.9;
         console.log("New speed is " + video.playbackRate);
     });
 
-    document.querySelector("#skip").addEventListener("click", function() {
+    document.getElementById("skip").addEventListener("click", function() {
         if (video.currentTime + 10 > video.duration) {
             video.currentTime = 0;
         } else {
@@ -36,28 +39,30 @@ window.addEventListener("load", function() {
         console.log("Current location is " + video.currentTime);
     });
 
-
-    document.querySelector("#mute").addEventListener("click", function() {
-        if (video.muted) {
-            video.muted = false;
-            this.innerText = "Mute";
-        } else {
-            video.muted = true;
-            this.innerText = "Unmute";
-        }
+    document.getElementById("mute").addEventListener("click", function() {
+        video.muted = !video.muted;
+        this.textContent = video.muted ? "Unmute" : "Mute";
     });
 
-    document.querySelector("#slider").addEventListener("change", function() {
+    document.getElementById("slider").addEventListener("input", function() {
         video.volume = this.value / 100;
-        document.getElementById("volume").innerText = this.value + "%";
-        console.log("Volume is " + this.value + "%");
+        updateVolumeDisplay();
     });
 
-    document.querySelector("#vintage").addEventListener("click", function() {
+    document.getElementById("vintage").addEventListener("click", function() {
         video.classList.add("oldSchool");
     });
 
-    document.querySelector("#orig").addEventListener("click", function() {
+    document.getElementById("orig").addEventListener("click", function() {
         video.classList.remove("oldSchool");
     });
+
+    function updateVolumeDisplay() {
+        var volumeDisplay = document.getElementById("volume");
+        if (volumeDisplay) {
+            volumeDisplay.textContent = `${Math.round(video.volume * 100)}%`;
+        }
+    }
+
+    console.log("Video controls initialized.");
 });
