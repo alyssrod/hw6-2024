@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", function() {
     var video = document.getElementById("player1");
-
-    if (!video) {
-        console.error("Video element not found.");
-        return;
+    
+    function updateVolumeDisplay() {
+        var volumeDisplay = document.getElementById("volume");
+        volumeDisplay.textContent = Math.round(video.volume * 100) + "%";
     }
 
-    video.autoplay = false;
-    video.loop = false;
-    
+    updateVolumeDisplay();
+
     document.getElementById("play").addEventListener("click", function() {
         console.log("Play Video");
         video.play();
@@ -31,12 +30,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.getElementById("skip").addEventListener("click", function() {
-        if (video.currentTime + 10 > video.duration) {
+        if (video.currentTime + 10 >= video.duration) {
             video.currentTime = 0;
+            console.log("Going back to the beginning");
         } else {
             video.currentTime += 10;
+            console.log("Current location is " + video.currentTime);
         }
-        console.log("Current location is " + video.currentTime);
     });
 
     document.getElementById("mute").addEventListener("click", function() {
@@ -50,19 +50,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     document.getElementById("vintage").addEventListener("click", function() {
-        video.classList.add("oldSchool");
+        video.className = "oldSchool";
     });
 
     document.getElementById("orig").addEventListener("click", function() {
-        video.classList.remove("oldSchool");
+        video.className = "";
     });
-
-    function updateVolumeDisplay() {
-        var volumeDisplay = document.getElementById("volume");
-        if (volumeDisplay) {
-            volumeDisplay.textContent = `${Math.round(video.volume * 100)}%`;
-        }
-    }
-
-    console.log("Video controls initialized.");
 });
