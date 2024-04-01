@@ -1,19 +1,20 @@
-document.addEventListener("DOMContentLoaded", function() {
-    var video = document.getElementById("player1");
-    video.autoplay = false;
-    video.loop = false;
+    var video;
+    var volumeDisplay; 
 
-    function updateVolumeDisplay() {
-        var volumeDisplay = document.getElementById("volume");
-        if (volumeDisplay) {
-            volumeDisplay.textContent = `${Math.round(video.volume * 100)}%`;
-        }
-    }
+    window.addEventListener("load", function(){ 
+        console.log("window's loaded"); 
+        video = document.getElementById("player1"); 
+        video.autoplay = false;
+        video.loop = false;
+        volumeDisplay = document.getElementById("volume"); 
+        volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%";
+    
 
     document.getElementById("play").addEventListener("click", function() {
         console.log("Play Video");
         video.play();
-        updateVolumeDisplay();
+        volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%";
+        console.log("going up to: " + video.volume * 100 + "%"); 
     });
 
     document.getElementById("pause").addEventListener("click", function() {
@@ -23,12 +24,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("slower").addEventListener("click", function() {
         video.playbackRate *= 0.9;
-        console.log("New speed is " + video.playbackRate.toFixed(5));
+        console.log("New speed is " + video.playbackRate);
     });
 
     document.getElementById("faster").addEventListener("click", function() {
         video.playbackRate /= 0.9;
-        console.log("New speed is " + video.playbackRate.toFixed(5));
+        console.log("New speed is " + video.playbackRate);
     });
 
     document.getElementById("skip").addEventListener("click", function() {
@@ -48,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("slider").addEventListener("input", function() {
         video.volume = this.value / 100;
+        volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%"; 
         updateVolumeDisplay();
     });
 
