@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
     var video = document.getElementById("player1");
+    video.autoplay = false;
+    video.loop = false;
 
     function updateVolumeDisplay() {
         var volumeDisplay = document.getElementById("volume");
@@ -21,12 +23,12 @@ document.addEventListener("DOMContentLoaded", function() {
 
     document.getElementById("slower").addEventListener("click", function() {
         video.playbackRate *= 0.9;
-        console.log("New speed is " + video.playbackRate);
+        console.log("New speed is " + video.playbackRate.toFixed(5));
     });
 
     document.getElementById("faster").addEventListener("click", function() {
         video.playbackRate /= 0.9;
-        console.log("New speed is " + video.playbackRate);
+        console.log("New speed is " + video.playbackRate.toFixed(5));
     });
 
     document.getElementById("skip").addEventListener("click", function() {
@@ -52,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById("vintage").addEventListener("click", function() {
         video.classList.add("oldSchool");
     });
+
     document.getElementById("orig").addEventListener("click", function() {
         video.classList.remove("oldSchool");
     });
