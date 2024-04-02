@@ -72,13 +72,14 @@ document.querySelector("#mute").addEventListener("click", function() {
 	video.volume = volume_decimal;
 	document.querySelector("#volume").innerHTML = volume + "%"
 	console.log("The volume value is " + volume_decimal)
-}
-);
+    }
+    );
     document.querySelector("#vintage").addEventListener("click", function() {
         video.classList.add("oldSchool");
-    });
+    }
+    );
 
     document.querySelector("#orig").addEventListener("click", function() {
         video.classList.remove("oldSchool");
-    });
-});
+    }
+    );
