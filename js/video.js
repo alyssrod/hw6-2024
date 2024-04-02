@@ -17,17 +17,17 @@ document.querySelector("#play").addEventListener("click", function() {
 	console.log("Played video");
 }); 
 
-document.getElementById("pause").addEventListener("click", function() {
+document.querySelector("#pause").addEventListener("click", function() {
     console.log("Pause Video");
     video.pause();
 }); 
 
-document.getElementById("slower").addEventListener("click", function() {
+document.querySelector("#slower").addEventListener("click", function() {
     video.playbackRate *= 0.9;
     console.log("New speed is " + video.playbackRate);
 }); 
 
-document.getElementById("faster").addEventListener("click", function() {
+document.querySelector("#faster").addEventListener("click", function() {
     video.playbackRate /= 0.9;
     console.log("New speed is " + video.playbackRate);
 });
@@ -43,7 +43,7 @@ document.querySelector("#skip").addEventListener("click", function() {
 	}
 	console.log("Skipped ahead");
 	console.log("Video's current time is " + video.currentTime);
-}); // Corrected the logic for skipping and added missing closing parenthesis
+});
 
 document.querySelector("#mute").addEventListener("click", function() {
 	video = document.querySelector("#player1");
