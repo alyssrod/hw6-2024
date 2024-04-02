@@ -2,16 +2,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var video;
     var volumeDisplay = document.getElementById('volumeDisplay');
 
-
-    window.addEventListener("load", function(){ 
+    window.addEventListener("load", function() { 
         console.log("Good job opening the window"); 
         video = document.querySelector("#player1"); 
         video.autoplay = false;
         video.loop = false;
         console.log("Auto play is set to " + video.autoplay);
-        console.log("Loop is set to "+ video.loop);
-    }); 
-    
+        console.log("Loop is set to " + video.loop);
+    });
 
     document.querySelector("#play").addEventListener("click", function() {
         console.log("Play Video");
@@ -50,18 +48,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
         this.textContent = video.muted ? "Unmute" : "Mute";
     });
 
-   document.getElementById("slider").addEventListener("input", function() {
+    document.getElementById("slider").addEventListener("input", function() {
         video.volume = this.value / 100;
-        if(volumeDisplay) volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%";
+        volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%";
     });
 
     document.getElementById("vintage").addEventListener("click", function() {
-        video = document.querySelector("#player1");
         video.classList.add("oldSchool");
     });
 
     document.getElementById("orig").addEventListener("click", function() {
-        video = document.querySelector("#player1");
         video.classList.remove("oldSchool");
     });
-}); 
+});
