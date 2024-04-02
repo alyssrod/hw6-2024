@@ -5,9 +5,8 @@
         video = document.querySelector("#player1"); 
         video.autoplay = false;
         video.loop = false;
-        console.log("Auto play is set to " + video.autoplay)
-        console.log("loop is set to "+ video.loop)
-        volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%";
+        console.log("Auto play is set to " + video.autoplay);
+        console.log("loop is set to "+ video.loop);
     }); 
     
 
