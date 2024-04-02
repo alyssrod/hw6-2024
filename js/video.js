@@ -1,5 +1,6 @@
+document.addEventListener('DOMContentLoaded', (event) => {
     var video;
-    var volumeDisplay; 
+    var volumeDisplay = document.getElementById('volumeDisplay');
 
 
     window.addEventListener("load", function(){ 
@@ -49,10 +50,9 @@
         this.textContent = video.muted ? "Unmute" : "Mute";
     });
 
-    document.getElementById("slider").addEventListener("input", function() {
+   document.getElementById("slider").addEventListener("input", function() {
         video.volume = this.value / 100;
-        if (volumeDisplay) volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%"; 
-        if (typeof updateVolumeDisplay === "function") updateVolumeDisplay(); 
+        if(volumeDisplay) volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%";
     });
 
     document.getElementById("vintage").addEventListener("click", function() {
@@ -62,3 +62,6 @@
     document.getElementById("orig").addEventListener("click", function() {
         video.classList.remove("oldSchool");
     });
+    
+    updateVolumeDisplay(); 
+});
