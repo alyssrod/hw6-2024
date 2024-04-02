@@ -1,4 +1,6 @@
     var video;
+    var volumeDisplay; 
+
 
     window.addEventListener("load", function(){ 
         console.log("zgood job opening the window"); 
@@ -49,8 +51,8 @@
 
     document.getElementById("slider").addEventListener("input", function() {
         video.volume = this.value / 100;
-        volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%"; 
-        updateVolumeDisplay();
+        if (volumeDisplay) volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%"; 
+        if (typeof updateVolumeDisplay === "function") updateVolumeDisplay(); 
     });
 
     document.getElementById("vintage").addEventListener("click", function() {
@@ -60,6 +62,3 @@
     document.getElementById("orig").addEventListener("click", function() {
         video.classList.remove("oldSchool");
     });
-
-    updateVolumeDisplay();
-);
