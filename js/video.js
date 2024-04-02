@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-    var video;
+    var video = document.querySelector("#player1");
     var volumeDisplay = document.getElementById('volumeDisplay');
 
+    if (!volumeDisplay) {
+        console.error('volumeDisplay element not found');
+        return;
+    }
     window.addEventListener("load", function() { 
         console.log("Good job opening the window"); 
         video = document.querySelector("#player1"); 
