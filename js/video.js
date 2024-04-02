@@ -63,5 +63,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById("orig").addEventListener("click", function() {
         video = document.querySelector("#player1");
         video.classList.remove("oldSchool");
-    }
-    );
+    });
+}); 
