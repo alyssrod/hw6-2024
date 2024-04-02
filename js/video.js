@@ -63,5 +63,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
         video.classList.remove("oldSchool");
     });
     
-    updateVolumeDisplay(); 
-});
+    //updateVolumeDisplay(); 
+//});
