@@ -62,6 +62,3 @@ document.addEventListener('DOMContentLoaded', (event) => {
     document.getElementById("orig").addEventListener("click", function() {
         video.classList.remove("oldSchool");
     });
-    //comments
-    //updateVolumeDisplay(); 
-//});
