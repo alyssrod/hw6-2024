@@ -56,9 +56,12 @@ document.addEventListener('DOMContentLoaded', (event) => {
     });
 
     document.getElementById("vintage").addEventListener("click", function() {
+        video = document.querySelector("#player1");
         video.classList.add("oldSchool");
     });
 
     document.getElementById("orig").addEventListener("click", function() {
+        video = document.querySelector("#player1");
         video.classList.remove("oldSchool");
-    });
+    }
+    );
