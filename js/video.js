@@ -1,16 +1,17 @@
     var video;
-    var volumeDisplay; 
 
     window.addEventListener("load", function(){ 
-        console.log("window's loaded"); 
-        video = document.getElementById("player1"); 
+        console.log("zgood job opening the window"); 
+        video = document.querySelector("#player1"); 
         video.autoplay = false;
         video.loop = false;
-        volumeDisplay = document.getElementById("volume"); 
+        console.log("Auto play is set to " + video.autoplay)
+        console.log("loop is set to "+ video.loop)
         volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%";
+    }); 
     
 
-    document.getElementById("play").addEventListener("click", function() {
+    document.querySelector("#play").addEventListener("click", function() {
         console.log("Play Video");
         video.play();
         volumeDisplay.textContent = (video.volume * 100).toFixed(0) + "%";
